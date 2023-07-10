@@ -22,6 +22,9 @@ namespace Player
         [SerializeField] private float minGroundCheckDistance;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
+        public int OnJumpAnimation => Animator.StringToHash("OnJump");
+        public int IsGroundedAnimation => Animator.StringToHash("IsGrounded");
+        public int IsFallAnimation => Animator.StringToHash("IsFall");
     
         public bool IsGrounded { get; private set; }    
         
@@ -76,6 +79,9 @@ namespace Player
             CurrentState?.Update();
             
             Array.ForEach(ParallelStates.ToArray(), state => state.Update());
+            
+            animator.SetBool(IsGroundedAnimation, IsGrounded);
+            animator.SetBool(IsFallAnimation, Rigidbody.velocity.y < 0);
         }
 
         public void SetState(EntityState entityState)

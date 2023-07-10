@@ -21,6 +21,7 @@ namespace Player.ParallelStates
             {
                 if (PlayerStateMachine.IsGrounded == false) return;
                 
+                Animator.SetTrigger(PlayerStateMachine.OnJumpAnimation);
                 PlayerStateMachine.AddParallelState(this);
             };
         }
