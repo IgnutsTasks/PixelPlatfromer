@@ -16,9 +16,9 @@ namespace Player.States
             _speedMovement = speedMovement;
         }
 
-        public override void Initialize(PlayerStateMachine playerStateMachine)
+        public override void Initialize(PlayerStateMachine playerStateMachine, Animator animator)
         {
-            base.Initialize(playerStateMachine);
+            base.Initialize(playerStateMachine, animator);
 
             InputHandler.Instance.OnMove += value =>
             {
@@ -27,6 +27,12 @@ namespace Player.States
                 _velocity = new Vector2(value * _speedMovement, _rigidbody.velocity.y);
                 PlayerStateMachine.SetState(this);
             };
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            Animator.SetBool(PlayerStateMachine.IsRunAnimation, true);
         }
 
         public override void Update()
