@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7616027580034050553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7616027580275287677}
   - component: {fileID: 7616027580275287674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rockblock-bridge-lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7616027580646432027}
   - component: {fileID: 8291991104219594266}
   - component: {fileID: 5471239464989774835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 7616027581208546139}
   - component: {fileID: 7616027581208546136}
   - component: {fileID: 7616027581208546137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 7616027581263830502}
   - component: {fileID: 7616027581263830503}
   - component: {fileID: 7616027581263830500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 7616027581531709118}
   - component: {fileID: 7616027581531709119}
   - component: {fileID: 7616027581531709116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 7616027581614182806}
   - component: {fileID: 7616027581614182807}
   - component: {fileID: 7616027581614182804}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rockblock-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7616027581730164050}
   - component: {fileID: 7616027581730164051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: plant-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 7616027581768964982}
   - component: {fileID: 7616027581768964983}
   - component: {fileID: 7616027581768964980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 7616027581854083403}
   - component: {fileID: 7616027581854083400}
   - component: {fileID: 7616027581854083401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 7616027581943275850}
   - component: {fileID: 7616027581943275851}
   - component: {fileID: 7616027581943275848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LavaBlock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

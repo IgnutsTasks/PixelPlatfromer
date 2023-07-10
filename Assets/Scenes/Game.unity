@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 16218865}
   - component: {fileID: 16218866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20858713}
   - component: {fileID: 20858714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +817,8 @@ GameObject:
   - component: {fileID: 102374368}
   - component: {fileID: 102374367}
   - component: {fileID: 102374366}
-  m_Layer: 0
+  - component: {fileID: 102374369}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,9 +856,12 @@ MonoBehaviour:
   graphic: {fileID: 1382150647}
   animator: {fileID: 1382150648}
   runSpeed: 6
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
   jumpForce: 820
   groundCheckPoint: {fileID: 1390354510}
-  minGroundCheckDistance: 0.1
+  minGroundCheckDistance: 0.2
 --- !u!50 &102374367
 Rigidbody2D:
   serializedVersion: 4
@@ -895,6 +899,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.02096498, y: 0.6918447}
   m_Size: {x: 0.77953315, y: 1.195673}
   m_Direction: 0
+--- !u!114 &102374369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102374364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c95f30eded4c75b43db083f5418cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &115735336
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 115735337}
   - component: {fileID: 115735338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-left (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137678562}
   - component: {fileID: 137678563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-right (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1315,7 +1331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 155917198}
   - component: {fileID: 155917199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1467,7 +1483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174808515}
   - component: {fileID: 174808516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1878,6 +1894,7 @@ GameObject:
   - component: {fileID: 262282408}
   - component: {fileID: 262282407}
   - component: {fileID: 262282406}
+  - component: {fileID: 262282409}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1920,7 +1937,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.084685
+  orthographic size: 3.9734821
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1944,12 +1961,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262282405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.92, y: -1.2849629, z: -21.451395}
+  m_LocalPosition: {x: -1.46, y: -0.93, z: -21.451395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &262282409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262282405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb906dff0e43b2871bf91902cce2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 1.5, z: -10}
+  speedMovement: 4
 --- !u!1 &269968433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269968434}
   - component: {fileID: 269968435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2358,7 +2389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359364481}
   - component: {fileID: 359364482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2522,7 +2553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388393401}
   - component: {fileID: 388393402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2838,7 +2869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445670861}
   - component: {fileID: 445670862}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2920,7 +2951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448156175}
   - component: {fileID: 448156176}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3248,7 +3279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500556799}
   - component: {fileID: 500556800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3576,7 +3607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516352545}
   - component: {fileID: 516352546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3658,7 +3689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526971627}
   - component: {fileID: 526971628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3740,7 +3771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565388920}
   - component: {fileID: 565388921}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3822,7 +3853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568636429}
   - component: {fileID: 568636430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4548,7 +4579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639657832}
   - component: {fileID: 639657833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4660,7 +4691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 706915895}
   - component: {fileID: 706915896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,7 +4855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 713169263}
   - component: {fileID: 713169264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5058,7 +5089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796298404}
   - component: {fileID: 796298405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5140,7 +5171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796666889}
   - component: {fileID: 796666890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5304,7 +5335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801390408}
   - component: {fileID: 801390409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5582,7 +5613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812246786}
   - component: {fileID: 812246787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5886,7 +5917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 885793472}
   - component: {fileID: 885793473}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-tile-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6202,7 +6233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 927366065}
   - component: {fileID: 927366066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6366,7 +6397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932898470}
   - component: {fileID: 932898471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ground-right-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6530,7 +6561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950472806}
   - component: {fileID: 950472807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6776,7 +6807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957742291}
   - component: {fileID: 957742292}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6988,7 +7019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1020704350}
   - component: {fileID: 1020704351}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7491,7 +7522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074303473}
   - component: {fileID: 1074303474}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7797,7 +7828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173711611}
   - component: {fileID: 1173711612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8043,7 +8074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194132736}
   - component: {fileID: 1194132737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8207,7 +8238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1202737693}
   - component: {fileID: 1202737694}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8289,7 +8320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1204292361}
   - component: {fileID: 1204292362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8535,7 +8566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240223713}
   - component: {fileID: 1240223714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8617,7 +8648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246785663}
   - component: {fileID: 1246785664}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8920,7 +8951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334395977}
   - component: {fileID: 1334395978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9002,7 +9033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361684135}
   - component: {fileID: 1361684136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-left (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9084,7 +9115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366271463}
   - component: {fileID: 1366271464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9167,7 +9198,7 @@ GameObject:
   - component: {fileID: 1382150647}
   - component: {fileID: 1382150646}
   - component: {fileID: 1382150648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9584,7 +9615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390354510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9599,7 +9630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390354509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 102374365}
@@ -10107,7 +10138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441061096}
   - component: {fileID: 1441061097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10833,7 +10864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531888281}
   - component: {fileID: 1531888282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11161,7 +11192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553625837}
   - component: {fileID: 1553625838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-right (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11489,7 +11520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1590922352}
   - component: {fileID: 1590922353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11653,7 +11684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596981085}
   - component: {fileID: 1596981086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11735,7 +11766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634764993}
   - component: {fileID: 1634764994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11912,7 +11943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666044652}
   - component: {fileID: 1666044653}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11994,7 +12025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679485045}
   - component: {fileID: 1679485046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12240,7 +12271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1714828082}
   - component: {fileID: 1714828083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12966,7 +12997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1825467298}
   - component: {fileID: 1825467299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13282,7 +13313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1870143260}
   - component: {fileID: 1870143261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13364,7 +13395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1876167699}
   - component: {fileID: 1876167700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13653,7 +13684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906762848}
   - component: {fileID: 1906762849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13817,7 +13848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921431496}
   - component: {fileID: 1921431497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14063,7 +14094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1970042426}
   - component: {fileID: 1970042427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14327,7 +14358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029810189}
   - component: {fileID: 2029810190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14655,7 +14686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2083265970}
   - component: {fileID: 2083265971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-solid (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14901,7 +14932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115881783}
   - component: {fileID: 2115881784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-top-2 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15053,7 +15084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2128214641}
   - component: {fileID: 2128214642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: dirt-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

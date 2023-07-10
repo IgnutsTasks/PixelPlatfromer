@@ -16,6 +16,7 @@ namespace Player
         [SerializeField] private float runSpeed = 6f;
 
         [Header("Jump")] 
+        [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float jumpForce = 450f;
         [SerializeField] private Transform groundCheckPoint; 
         [SerializeField] private float minGroundCheckDistance;
@@ -109,8 +110,12 @@ namespace Player
 
         private bool CheckGround()
         {
-            RaycastHit2D raycastHit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down);
-
+            RaycastHit2D raycastHit = Physics2D.Raycast(
+                groundCheckPoint.position, 
+                Vector2.down,
+                Mathf.Infinity,
+                whatIsGround);
+            
             return raycastHit && Vector3.Distance(raycastHit.point, groundCheckPoint.position) < minGroundCheckDistance;
         }
     }
