@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Player.ParallelStates;
 using Player.States;
 using UnityEngine;
@@ -19,14 +20,23 @@ namespace Player
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float jumpForce = 450f;
         [SerializeField] private Transform groundCheckPoint; 
-        [SerializeField] private float minGroundCheckDistance;
+        [SerializeField] private float groundCheckDistance;
+
+        [Header("Wall sliding")]
+        [SerializeField] private LayerMask whatIsWall;
+        [SerializeField] private float speedSliding = -4;
+        [SerializeField] private Transform wallCheckPoint;
+        [SerializeField] private float wallCheckDistance;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
         public int OnJumpAnimation => Animator.StringToHash("OnJump");
         public int IsGroundedAnimation => Animator.StringToHash("IsGrounded");
         public int IsFallAnimation => Animator.StringToHash("IsFall");
+        public int OnSlideAnimation => Animator.StringToHash("OnSlide");
+        public int IsSlideAnimation => Animator.StringToHash("IsSlide");
     
         public bool IsGrounded { get; private set; }    
+        public bool IsWalled { get; private set; }
         
         public IdleState IdleState { get; private set; }
         public RunState RunState { get; private set; }
@@ -36,7 +46,8 @@ namespace Player
         
 
         public PJumpState PJumpState { get; private set; }
-        
+        public PWallClimbing PWallClimbing { get; private set; }
+
         public Rigidbody2D Rigidbody { get; private set; }
         public List<ParallelState> ParallelStates { get; } = new List<ParallelState>();
         
@@ -52,6 +63,7 @@ namespace Player
             DeathState = new DeathState();
             
             PJumpState = new PJumpState(jumpForce);
+            PWallClimbing = new PWallClimbing(speedSliding);
         }
 
         private void Start()
@@ -63,6 +75,7 @@ namespace Player
             SetState(RunState);
             
             PJumpState.Initialize(this, animator);
+            PWallClimbing.Initialize(this, animator);
         }
 
         private void FixedUpdate()
@@ -72,6 +85,7 @@ namespace Player
             Array.ForEach(ParallelStates.ToArray(), state => state.FixedUpdate());
 
             IsGrounded = CheckGround();
+            IsWalled = CheckWall();
         }
 
         private void Update()
@@ -96,14 +110,16 @@ namespace Player
 
         public void AddParallelState(ParallelState parallelState)
         {
-            parallelState.Enter();
+            if (ParallelStates.Contains(parallelState)) return;
+            
             ParallelStates.Add(parallelState);
+            parallelState.Enter();
         }
 
         public void RemoveParallelState(ParallelState parallelState)
         {
-            parallelState.Exit();
             ParallelStates.Remove(parallelState);
+            parallelState.Exit();
         }
 
         public void LookAtDirection(float moveX)
@@ -122,7 +138,18 @@ namespace Player
                 Mathf.Infinity,
                 whatIsGround);
             
-            return raycastHit && Vector3.Distance(raycastHit.point, groundCheckPoint.position) < minGroundCheckDistance;
+            return raycastHit && Vector3.Distance(raycastHit.point, groundCheckPoint.position) < groundCheckDistance;
+        }
+
+        private bool CheckWall()
+        {
+            RaycastHit2D raycastHit = Physics2D.Raycast(
+                wallCheckPoint.position, 
+                Vector2.right,
+                Mathf.Infinity,
+                whatIsWall);
+            
+            return raycastHit && Vector3.Distance(raycastHit.point, wallCheckPoint.position) < wallCheckDistance;
         }
     }
 }

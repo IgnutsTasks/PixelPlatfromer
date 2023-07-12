@@ -5,6 +5,8 @@ namespace Player
 {
     public abstract class EntityState
     {
+        public string Name { get; protected set; }
+        
         public PlayerStateMachine PlayerStateMachine { get; private set; }
         public Animator Animator { get; private set; }
         

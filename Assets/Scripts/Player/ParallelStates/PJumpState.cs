@@ -10,6 +10,8 @@ namespace Player.ParallelStates
 
         public PJumpState(float jumpForce)
         {
+            Name = "PJump";
+            
             _jumpForce = jumpForce;
         }
 
