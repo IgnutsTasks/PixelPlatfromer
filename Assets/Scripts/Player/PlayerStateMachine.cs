@@ -16,17 +16,20 @@ namespace Player
         [Header("Movement properties")] 
         [SerializeField] private float runSpeed = 6f;
 
+        [Header("Gravity")] 
+        [SerializeField] private float minGravity = -5;
+
         [Header("Jump")] 
         [SerializeField] private LayerMask whatIsGround;
-        [SerializeField] private float jumpForce = 450f;
+        [SerializeField] private float jumpForce = 820f;
         [SerializeField] private Transform groundCheckPoint; 
-        [SerializeField] private float groundCheckRadius;
+        [SerializeField] private float groundCheckRadius = 0.11f;
 
         [Header("Wall sliding")]
         [SerializeField] private LayerMask whatIsWall;
-        [SerializeField] private float speedSliding = -4;
+        [SerializeField] private float speedSliding = -1;
         [SerializeField] private Transform wallCheckPoint;
-        [SerializeField] private float wallCheckRadius;
+        [SerializeField] private float wallCheckRadius = 0.001f;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
         public int OnJumpAnimation => Animator.StringToHash("OnJump");
@@ -89,6 +92,8 @@ namespace Player
 
             IsGrounded = CheckGround();
             IsWalled = CheckWall();
+            
+            CalculateGravity();
         }
 
         private void Update()
@@ -136,6 +141,13 @@ namespace Player
             scale.x = moveX > 0 ? Mathf.Abs(scale.x) : Mathf.Abs(scale.x) * -1;
 
             transform.localScale = scale;
+        }
+
+        private void CalculateGravity()
+        {
+            if (Rigidbody.velocity.y >= minGravity) return;
+            
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, minGravity);
         }
 
         private bool CheckWall()
