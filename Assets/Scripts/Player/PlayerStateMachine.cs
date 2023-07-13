@@ -20,13 +20,13 @@ namespace Player
         [SerializeField] private LayerMask whatIsGround;
         [SerializeField] private float jumpForce = 450f;
         [SerializeField] private Transform groundCheckPoint; 
-        [SerializeField] private float groundCheckDistance;
+        [SerializeField] private float groundCheckRadius;
 
         [Header("Wall sliding")]
         [SerializeField] private LayerMask whatIsWall;
         [SerializeField] private float speedSliding = -4;
         [SerializeField] private Transform wallCheckPoint;
-        [SerializeField] private float wallCheckDistance;
+        [SerializeField] private float wallCheckRadius;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
         public int OnJumpAnimation => Animator.StringToHash("OnJump");
@@ -47,6 +47,7 @@ namespace Player
 
         public PJumpState PJumpState { get; private set; }
         public PWallClimbing PWallClimbing { get; private set; }
+        public PWallJumpState PWallJumpState { get; private set; }
 
         public Rigidbody2D Rigidbody { get; private set; }
         public List<ParallelState> ParallelStates { get; } = new List<ParallelState>();
@@ -64,6 +65,7 @@ namespace Player
             
             PJumpState = new PJumpState(jumpForce);
             PWallClimbing = new PWallClimbing(speedSliding);
+            PWallJumpState = new PWallJumpState(jumpForce);
         }
 
         private void Start()
@@ -76,6 +78,7 @@ namespace Player
             
             PJumpState.Initialize(this, animator);
             PWallClimbing.Initialize(this, animator);
+            PWallJumpState.Initialize(this, animator);
         }
 
         private void FixedUpdate()
@@ -122,6 +125,11 @@ namespace Player
             parallelState.Exit();
         }
 
+        public bool HasParallelState(ParallelState parallelState)
+        {
+            return ParallelStates.Contains(parallelState);
+        }
+
         public void LookAtDirection(float moveX)
         {
             Vector2 scale = transform.localScale;
@@ -130,26 +138,36 @@ namespace Player
             transform.localScale = scale;
         }
 
-        private bool CheckGround()
-        {
-            RaycastHit2D raycastHit = Physics2D.Raycast(
-                groundCheckPoint.position, 
-                Vector2.down,
-                Mathf.Infinity,
-                whatIsGround);
-            
-            return raycastHit && Vector3.Distance(raycastHit.point, groundCheckPoint.position) < groundCheckDistance;
-        }
-
         private bool CheckWall()
         {
-            RaycastHit2D raycastHit = Physics2D.Raycast(
-                wallCheckPoint.position, 
-                Vector2.right,
-                Mathf.Infinity,
-                whatIsWall);
-            
-            return raycastHit && Vector3.Distance(raycastHit.point, wallCheckPoint.position) < wallCheckDistance;
+            Collider2D[] colliders =
+                Physics2D.OverlapCircleAll(wallCheckPoint.position, wallCheckRadius, whatIsWall);
+
+            foreach (var col in colliders)
+            {
+                if (col.gameObject == gameObject) continue;
+                if (col.isTrigger) continue;
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckGround()
+        {
+            Collider2D[] colliders =
+                Physics2D.OverlapCircleAll(groundCheckPoint.position, groundCheckRadius, whatIsGround);
+
+            foreach (var col in colliders)
+            {
+                if (col.gameObject == gameObject) continue;
+                if (col.isTrigger) continue;
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

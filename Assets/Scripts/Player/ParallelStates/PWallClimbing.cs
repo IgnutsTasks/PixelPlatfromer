@@ -30,10 +30,7 @@ namespace Player.ParallelStates
             {
                 if (PlayerStateMachine.IsWalled == false) return;
                 
-                PlayerStateMachine.RemoveParallelState(this);
-
-                PlayerStateMachine.Rigidbody.velocity = Vector2.zero;
-                PlayerStateMachine.Rigidbody.AddForce(Vector2.up * 820);
+                //PlayerStateMachine.RemoveParallelState(this);
             };
         }
 

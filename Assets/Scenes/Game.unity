@@ -1025,13 +1025,13 @@ MonoBehaviour:
     m_Bits: 64
   jumpForce: 820
   groundCheckPoint: {fileID: 1390354510}
-  groundCheckDistance: 1
+  groundCheckRadius: 0.11
   whatIsWall:
     serializedVersion: 2
     m_Bits: 64
   speedSliding: -1
   wallCheckPoint: {fileID: 293739327}
-  wallCheckDistance: 0.1
+  wallCheckRadius: 0.001
 --- !u!50 &102374367
 Rigidbody2D:
   serializedVersion: 4
@@ -3772,7 +3772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262282405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.46, y: -0.93, z: -21.451395}
+  m_LocalPosition: {x: 20.21, y: 1.55, z: -21.451395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3980,7 +3980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293739326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.41700006, y: 0.73099995, z: 0}
+  m_LocalPosition: {x: 0.46, y: 0.73099995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 102374365}
