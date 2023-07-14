@@ -1,6 +1,6 @@
 ﻿namespace Player
 {
-    public abstract class ParallelState : EntityState
+    public abstract class ParallelState : PlayerState
     {
         
     }

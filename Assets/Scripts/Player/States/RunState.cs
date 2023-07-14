@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player.States
 {
-    public class RunState : EntityState
+    public class RunState : PlayerState
     {
         private readonly Rigidbody2D _rigidbody;
         private readonly float _speedMovement;

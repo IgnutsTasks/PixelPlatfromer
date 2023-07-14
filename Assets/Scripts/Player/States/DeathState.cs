@@ -1,6 +1,6 @@
 ﻿namespace Player.States
 {
-    public class DeathState : EntityState
+    public class DeathState : PlayerState
     {
         public override void Update()
         {

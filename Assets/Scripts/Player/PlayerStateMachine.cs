@@ -45,7 +45,7 @@ namespace Player
         public RunState RunState { get; private set; }
         public DeathState DeathState { get; private set; }
         
-        public EntityState CurrentState { get; private set; }
+        public PlayerState CurrentState { get; private set; }
         
 
         public PJumpState PJumpState { get; private set; }
@@ -106,13 +106,13 @@ namespace Player
             animator.SetBool(IsFallAnimation, Rigidbody.velocity.y < 0);
         }
 
-        public void SetState(EntityState entityState)
+        public void SetState(PlayerState playerState)
         {
-            if (entityState == CurrentState) return;
+            if (playerState == CurrentState) return;
             if (CurrentState == DeathState) return;
             
             CurrentState?.Exit();
-            CurrentState = entityState;
+            CurrentState = playerState;
             CurrentState.Enter();
         }
 

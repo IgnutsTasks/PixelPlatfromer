@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public abstract class EntityState
+    public abstract class PlayerState
     {
         public string Name { get; protected set; }
         

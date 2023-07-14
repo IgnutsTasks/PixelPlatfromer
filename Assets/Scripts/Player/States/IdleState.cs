@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player.States
 {
-    public class IdleState : EntityState
+    public class IdleState : PlayerState
     {
         public override void Initialize(PlayerStateMachine playerStateMachine, Animator animator)
         {
