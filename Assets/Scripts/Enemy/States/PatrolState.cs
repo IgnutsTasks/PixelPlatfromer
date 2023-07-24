@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy.States
 {
@@ -12,6 +14,8 @@ namespace Enemy.States
 
         public Transform CurrentPatrolPoint => _patrolPoints[_currentPatrolPointIndex];
 
+        public event Action OnNewTarget; 
+
         public PatrolState(Rigidbody2D rigidbody, Transform[] patrolPoints, float speedMovement)
         {
             _rigidbody = rigidbody;
@@ -24,11 +28,15 @@ namespace Enemy.States
             base.Enter();
 
             _currentPatrolPointIndex = Random.Range(0, _patrolPoints.Length);
+            
+            Animator.SetBool(EnemyStateMachine.IsRunAnimation, true);
         }
 
         public override void Update()
         {
+            EnemyStateMachine.LookAtDirection(CurrentPatrolPoint.position);
             
+            CheckPoints();
         }
 
         public override void FixedUpdate()
@@ -49,9 +57,25 @@ namespace Enemy.States
 
         private void CheckDestination()
         {
-            if ((Vector3) _rigidbody.position != CurrentPatrolPoint.position) return;
+            if (Math.Round(_rigidbody.position.x, 2) != Math.Round(CurrentPatrolPoint.position.x, 2)) return;
+
+            var lastIndex = _currentPatrolPointIndex;
+            _currentPatrolPointIndex = Random.Range(0, _patrolPoints.Length);
+
+            if (_currentPatrolPointIndex == lastIndex)
+            {
+                _currentPatrolPointIndex += 1;
+            }
             
-            // logic
+            OnNewTarget?.Invoke();
+        }
+
+        private void CheckPoints()
+        {
+            foreach (var point in _patrolPoints)
+            {
+                point.position = new Vector3(point.position.x,  EnemyStateMachine.transform.position.y);
+            }
         }
     }
 }

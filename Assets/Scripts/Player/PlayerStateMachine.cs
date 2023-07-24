@@ -134,7 +134,7 @@ namespace Player
         {
             return ParallelStates.Contains(parallelState);
         }
-
+                
         public void LookAtDirection(float moveX)
         {
             Vector2 scale = transform.localScale;
