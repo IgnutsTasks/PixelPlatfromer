@@ -61,7 +61,7 @@ namespace Enemy.States
 
             var lastIndex = _currentPatrolPointIndex;
             _currentPatrolPointIndex = Random.Range(0, _patrolPoints.Length);
-
+            
             if (_currentPatrolPointIndex == lastIndex)
             {
                 _currentPatrolPointIndex += 1;

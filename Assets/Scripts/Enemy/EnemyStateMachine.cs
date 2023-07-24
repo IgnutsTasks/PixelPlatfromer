@@ -14,15 +14,27 @@ namespace Enemy
         
         [Header("Patrol state")]
         [SerializeField] private Transform[] patrolPoints;
-        [SerializeField] private float patrolSpeed;
+        [SerializeField] private float patrolSpeed = 2;
+
+        [Header("Shadow state")] 
+        [SerializeField] private TriggerHandler shadowStateZone;
+        [SerializeField] private TriggerHandler relaxZone;
+        [SerializeField] private float shadowSpeed = 3;
+
+        [Header("Attack state")] 
+        [SerializeField] private TriggerHandler attackZone;
+        [SerializeField] private float attackRate = 1;
         
 
         private Rigidbody2D _rigidbody;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
+        public int OnAttackAnimation => Animator.StringToHash("OnAttack");
         
         public IdleToRunState IdleToRunState { get; private set; }
         public PatrolState PatrolState { get; private set; }
+        public ShadowState ShadowState { get; private set; }
+        public AttackState AttackState { get; private set; }
         
         public EnemyState CurrentState { get; private set; }
 
@@ -32,12 +44,16 @@ namespace Enemy
             
             IdleToRunState = new IdleToRunState(timeToRun);
             PatrolState = new PatrolState(_rigidbody, patrolPoints, patrolSpeed);
+            ShadowState = new ShadowState(_rigidbody, shadowSpeed, shadowStateZone, relaxZone);
+            AttackState = new AttackState(attackRate, attackZone);
         }
 
         private void Start()
         {
             PatrolState.Initialize(this, animator);
             IdleToRunState.Initialize(this, animator);
+            ShadowState.Initialize(this, animator);
+            AttackState.Initialize(this, animator);
             
             SetState(PatrolState);
         }
