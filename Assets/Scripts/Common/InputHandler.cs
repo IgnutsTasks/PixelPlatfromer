@@ -7,6 +7,7 @@ namespace Common
     {
         public event Action OnJump;
         public event Action<float> OnMove;
+        public event Action OnAttack;
         
         public override void OnAwake()
         {
@@ -22,6 +23,11 @@ namespace Common
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 OnJump?.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                OnAttack?.Invoke();
             }
         }
     }

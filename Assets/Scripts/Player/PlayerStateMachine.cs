@@ -30,6 +30,9 @@ namespace Player
         [SerializeField] private float speedSliding = -1;
         [SerializeField] private Transform wallCheckPoint;
         [SerializeField] private float wallCheckRadius = 0.001f;
+
+        [Header("Attack state")] 
+        [SerializeField] private float attackDelay = 1;
         
         public int IsRunAnimation => Animator.StringToHash("IsRun");
         public int OnJumpAnimation => Animator.StringToHash("OnJump");
@@ -37,6 +40,10 @@ namespace Player
         public int IsFallAnimation => Animator.StringToHash("IsFall");
         public int OnSlideAnimation => Animator.StringToHash("OnSlide");
         public int IsSlideAnimation => Animator.StringToHash("IsSlide");
+        
+        public int OnFirstAttackAnimation => Animator.StringToHash("OnFirstAttack");
+        public int OnSecondAttackAnimation => Animator.StringToHash("OnSecondAttack");
+        public int OnThirdAttackAnimation => Animator.StringToHash("OnThirdAttack");
     
         public bool IsGrounded { get; private set; }    
         public bool IsWalled { get; private set; }
@@ -51,6 +58,7 @@ namespace Player
         public PJumpState PJumpState { get; private set; }
         public PWallClimbing PWallClimbing { get; private set; }
         public PWallJumpState PWallJumpState { get; private set; }
+        public PAttackState PAttackState { get; private set; }
 
         public Rigidbody2D Rigidbody { get; private set; }
         public List<ParallelState> ParallelStates { get; } = new List<ParallelState>();
@@ -69,6 +77,7 @@ namespace Player
             PJumpState = new PJumpState(jumpForce);
             PWallClimbing = new PWallClimbing(speedSliding);
             PWallJumpState = new PWallJumpState(jumpForce);
+            PAttackState = new PAttackState(attackDelay);
         }
 
         private void Start()
@@ -82,6 +91,7 @@ namespace Player
             PJumpState.Initialize(this, animator);
             PWallClimbing.Initialize(this, animator);
             PWallJumpState.Initialize(this, animator);
+            PAttackState.Initialize(this, animator);
         }
 
         private void FixedUpdate()

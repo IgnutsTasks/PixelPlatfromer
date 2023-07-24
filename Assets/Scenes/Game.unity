@@ -2863,6 +2863,7 @@ MonoBehaviour:
   speedSliding: -1
   wallCheckPoint: {fileID: 293739327}
   wallCheckRadius: 0.001
+  attackDelay: 0.3
 --- !u!50 &102374367
 Rigidbody2D:
   serializedVersion: 4
