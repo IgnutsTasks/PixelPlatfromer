@@ -2811,6 +2811,7 @@ GameObject:
   - component: {fileID: 102374367}
   - component: {fileID: 102374366}
   - component: {fileID: 102374369}
+  - component: {fileID: 102374370}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -2914,6 +2915,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfoText: {fileID: 1924493651}
+--- !u!114 &102374370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102374364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aefe25990f40868d35d874187319b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 5
+  startValue: 4
+  onChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onZero:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 102374368}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 102374367}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
+        m_MethodName: Sleep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &102964256
 GameObject:
   m_ObjectHideFlags: 0
@@ -8666,10 +8711,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 248222534}
-  - component: {fileID: 248222536}
   - component: {fileID: 248222535}
   m_Layer: 0
-  m_Name: PlayerHealthManager
+  m_Name: PlayerHealthView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8703,26 +8747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthViewPrefab: {fileID: 5406779024107507492, guid: 45a9453a5c0255349838e55d0163bb4e, type: 3}
   layout: {fileID: 786862089}
---- !u!114 &248222536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 248222533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50aefe25990f40868d35d874187319b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxValue: 5
-  startValue: 3
-  onChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  onZero:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &250741929
 GameObject:
   m_ObjectHideFlags: 0
@@ -18551,6 +18575,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 169803983}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &565276280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565276281}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565276281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565276280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.492, y: 0.58, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 888556880}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565388919
 GameObject:
@@ -29384,6 +29438,7 @@ GameObject:
   - component: {fileID: 888556883}
   - component: {fileID: 888556882}
   - component: {fileID: 888556881}
+  - component: {fileID: 888556884}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -29406,6 +29461,7 @@ Transform:
   - {fileID: 1302346031}
   - {fileID: 2015858117}
   - {fileID: 805603362}
+  - {fileID: 565276281}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29422,6 +29478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 741124740}
+  health: {fileID: 888556884}
   timeToRun: 2
   patrolPoints:
   - {fileID: 1928443803}
@@ -29431,7 +29488,13 @@ MonoBehaviour:
   relaxZone: {fileID: 2015858118}
   shadowSpeed: 3
   attackZone: {fileID: 805603363}
-  attackRate: 3
+  attackRate: 1
+  attackDelay: 0.5
+  attackPoint: {fileID: 565276281}
+  attackRadius: 1
+  whatToAttack:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &888556882
 Rigidbody2D:
   serializedVersion: 4
@@ -29469,6 +29532,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0.013252258, y: 0.6070502}
   m_Size: {x: 0.6678467, y: 1.217031}
   m_Direction: 0
+--- !u!114 &888556884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888556879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b2ece64440cdf41950e0bf16a7802a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 1
+  startValue: 1
+  onChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onZero:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &892278901
 PrefabInstance:
   m_ObjectHideFlags: 0

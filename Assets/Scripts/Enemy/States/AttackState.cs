@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Common;
 using Player;
 using UnityEngine;
 
@@ -6,15 +7,26 @@ namespace Enemy.States
 {
     public class AttackState : EnemyState
     {
+        private readonly Transform _attackPoint;
+        private readonly float _attackRadius;
+        private readonly LayerMask _whatToAttack;
+
         private readonly TriggerHandler _attackZone;
+        private readonly float _attackDelay;
         private readonly float _attackRate;
 
         private IEnumerator _attackCoroutine;
 
-        public AttackState(float attackRate, TriggerHandler attackZone)
+        public AttackState(float attackRate, TriggerHandler attackZone, Transform attackPoint, float attackRadius, 
+            LayerMask whatToAttack, float attackDelay)
         {
             _attackRate = attackRate;
             _attackZone = attackZone;
+            _attackDelay = attackDelay;
+
+            _attackPoint = attackPoint;
+            _attackRadius = attackRadius;
+            _whatToAttack = whatToAttack;
         }
 
         public override void Initialize(EnemyStateMachine enemyStateMachine, Animator animator)
@@ -48,7 +60,7 @@ namespace Enemy.States
 
         public override void Update()
         {
-            
+            EnemyStateMachine.LookAtDirection(PlayerStateMachine.Instance.transform.position);
         }
 
         public override void FixedUpdate()
@@ -68,6 +80,21 @@ namespace Enemy.States
         private void Attack()
         {
             Animator.SetTrigger(EnemyStateMachine.OnAttackAnimation);
+
+            EnemyStateMachine.StartCoroutine(Utils.AttackDelay(_attackDelay, () =>
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRadius, _whatToAttack);
+
+                foreach (var col in colliders)
+                {
+                    if (col.isTrigger) continue;
+                    if (col.gameObject == EnemyStateMachine.gameObject) continue;
+                    if (col.TryGetComponent<PlayerHealth>(out var playerHealth) == false) continue;
+
+                    playerHealth.Value -= 1;
+
+                }
+            }));
         }
     }
 }

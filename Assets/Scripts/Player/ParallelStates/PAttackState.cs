@@ -28,12 +28,19 @@ namespace Player.ParallelStates
             {
                 if (_canAttack == false) return;
                 
-                Attack();
+                PlayerStateMachine.AddParallelState(this);
             };
             
             _animations.Add(PlayerStateMachine.OnFirstAttackAnimation);
             _animations.Add(PlayerStateMachine.OnSecondAttackAnimation);
             _animations.Add(PlayerStateMachine.OnThirdAttackAnimation);
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            
+            Attack();
         }
 
         public override void Update()

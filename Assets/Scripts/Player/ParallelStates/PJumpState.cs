@@ -23,7 +23,6 @@ namespace Player.ParallelStates
             {
                 if (PlayerStateMachine.IsGrounded == false) return;
                 
-                Animator.SetTrigger(PlayerStateMachine.OnJumpAnimation);
                 PlayerStateMachine.AddParallelState(this);
             };
         }
@@ -32,6 +31,8 @@ namespace Player.ParallelStates
         {
             base.Enter();
             
+            Animator.SetTrigger(PlayerStateMachine.OnJumpAnimation);
+
             PlayerStateMachine.Rigidbody.AddForce(Vector2.up * _jumpForce);
 
             PlayerStateMachine.RemoveParallelState(this);

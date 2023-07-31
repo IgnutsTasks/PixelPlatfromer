@@ -40,6 +40,8 @@ namespace Player
         public int IsFallAnimation => Animator.StringToHash("IsFall");
         public int OnSlideAnimation => Animator.StringToHash("OnSlide");
         public int IsSlideAnimation => Animator.StringToHash("IsSlide");
+
+        public int OnDeath => Animator.StringToHash("OnDeath");
         
         public int OnFirstAttackAnimation => Animator.StringToHash("OnFirstAttack");
         public int OnSecondAttackAnimation => Animator.StringToHash("OnSecondAttack");
@@ -118,8 +120,8 @@ namespace Player
 
         public void SetState(PlayerState playerState)
         {
-            if (playerState == CurrentState) return;
             if (CurrentState == DeathState) return;
+            if (playerState == CurrentState) return;
             
             CurrentState?.Exit();
             CurrentState = playerState;
@@ -128,6 +130,7 @@ namespace Player
 
         public void AddParallelState(ParallelState parallelState)
         {
+            if (CurrentState == DeathState) return;
             if (ParallelStates.Contains(parallelState)) return;
             
             ParallelStates.Add(parallelState);

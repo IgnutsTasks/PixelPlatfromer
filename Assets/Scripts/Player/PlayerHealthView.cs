@@ -47,10 +47,11 @@ namespace Player
             for (int i = _createdHealthView.Count - 1; i >= 0; i--)
             {
                 if (stepsCount == 0) return;
+                stepsCount--;
+
                 if (_createdHealthView[i].IsActive == false) continue;
                 
                 _createdHealthView[i].SetActive(false);
-                stepsCount--;
             }
         }
     }
